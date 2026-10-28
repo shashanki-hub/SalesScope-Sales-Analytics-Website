@@ -1,0 +1,1026 @@
+
+/* ========================================
+   E-COMMERCE SALES ANALYTICS DASHBOARD
+   Complete Style.css
+======================================== */
+
+/* 1. GLOBAL SETTINGS */
+:root {
+    --navy: #111b32;
+    --navy-light: #263653;
+    --blue: #4169f5;
+    --blue-light: #eaf0ff;
+    --purple: #8b5cf6;
+    --teal: #159b91;
+    --amber: #ed9a32;
+    --ink: #19243a;
+    --muted: #77839a;
+    --line: #e6ebf3;
+    --bg: #f4f7fc;
+    --white: #ffffff;
+    --shadow: 0 8px 28px rgba(23, 39, 72, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 25px;
+}
+
+body {
+    font-family: "DM Sans", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img,
+canvas {
+    max-width: 100%;
+}
+
+
+/* 2. SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 235px;
+    height: 100vh;
+    padding: 27px 17px;
+    background: var(--navy);
+    color: #d8e0ef;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-size: 19px;
+    font-weight: 800;
+    padding: 0 6px 38px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #7290ff, #3155e9);
+    color: white;
+    font-size: 22px;
+}
+
+.brand small {
+    display: block;
+    color: #8392ae;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+}
+
+.side-label {
+    padding: 0 11px 12px;
+    color: #8996ad;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.sidebar nav {
+    display: grid;
+    gap: 5px;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 12px;
+    border-radius: 10px;
+    color: #afbdd2;
+    font-size: 12px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: var(--navy-light);
+    color: white;
+}
+
+.sidebar nav a.active {
+    box-shadow: inset 3px 0 #7893ff;
+}
+
+.side-bottom {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: #1a2945;
+    padding: 13px;
+    border-radius: 12px;
+    font-size: 11px;
+}
+
+.side-bottom small {
+    display: block;
+    color: #95a3bc;
+    font-size: 10px;
+}
+
+.live-dot,
+.badge i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #36c79a;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+
+/* 3. MAIN DASHBOARD
+   IMPORTANT: This fixes the sidebar overlap.
+*/
+
+main,
+.main-content {
+    margin-left: 235px;
+    width: calc(100% - 235px);
+    min-width: 0;
+    padding: 0 35px;
+    box-sizing: border-box;
+}
+
+main > *,
+.main-content > * {
+    min-width: 0;
+    max-width: 100%;
+}
+
+
+/* 4. TOP HEADER */
+
+.topbar {
+    min-height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    color: #8996ad;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.topbar .eyebrow {
+    margin-bottom: 4px;
+}
+
+.topbar h1 {
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    overflow-wrap: anywhere;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 30px;
+    background: #e7f8f0;
+    color: #167653;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* 5. HERO SECTION */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    min-height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    color: white;
+    background: linear-gradient(
+        115deg,
+        #14213d,
+        #213b72 67%,
+        #3158bc
+    );
+    margin-bottom: 30px;
+    box-shadow: 0 14px 32px rgba(29, 55, 101, 0.1);
+}
+
+.hero-copy {
+    padding: 36px;
+    align-self: center;
+}
+
+.hero-copy .eyebrow {
+    color: #a9bcff;
+}
+
+.hero h2 {
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: clamp(28px, 3vw, 39px);
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 14px 0;
+}
+
+.hero h2 span {
+    color: #9cb2ff;
+}
+
+.hero-copy > p:not(.eyebrow) {
+    max-width: 440px;
+    margin-bottom: 23px;
+    color: #c4cee3;
+    font-size: 13px;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding: 11px 16px;
+    border-radius: 8px;
+    background: white;
+    color: #203b85;
+    font-size: 12px;
+    font-weight: 700;
+    transition: transform 0.2s;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Decorative chart illustration */
+
+.hero-art {
+    position: relative;
+    min-width: 0;
+    min-height: 240px;
+    overflow: hidden;
+}
+
+.orbit {
+    position: absolute;
+    top: -15px;
+    right: 8%;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
+.bars {
+    position: absolute;
+    bottom: 30px;
+    left: 12%;
+    right: 10%;
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    gap: 9px;
+    transform: skewY(-4deg);
+}
+
+.bars i {
+    flex: 1;
+    height: 40%;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(#a8baff, #5279f4);
+}
+
+.bars i:nth-child(2) { height: 54%; }
+.bars i:nth-child(3) { height: 44%; }
+.bars i:nth-child(4) { height: 68%; }
+.bars i:nth-child(5) { height: 61%; }
+.bars i:nth-child(6) { height: 78%; }
+.bars i:nth-child(7) { height: 70%; }
+
+.bars i:nth-child(8) {
+    height: 95%;
+    background: linear-gradient(#70dfc4, #2b9eab);
+}
+
+.floating-card {
+    position: absolute;
+    top: 23px;
+    right: 7%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--ink);
+    box-shadow: 0 8px 20px rgba(16, 26, 56, 0.2);
+}
+
+.floating-card small,
+.floating-card strong {
+    display: block;
+}
+
+.floating-card small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.floating-card strong {
+    font-size: 11px;
+}
+
+
+/* 6. GENERAL SECTION HEADINGS */
+
+.dashboard-section {
+    margin-bottom: 38px;
+    scroll-margin-top: 25px;
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.section-head h2 {
+    margin: 3px 0;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.sub {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.tag {
+    padding: 8px 10px;
+    border-radius: 7px;
+    background: #edf1f8;
+    color: #697790;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    white-space: nowrap;
+}
+
+
+/* 7. FILTER PANEL */
+
+.filter-panel {
+    padding: 24px;
+    margin-bottom: 38px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: white;
+    box-shadow: var(--shadow);
+    scroll-margin-top: 25px;
+}
+
+.filter-panel .section-head {
+    margin-bottom: 20px;
+}
+
+.link-button {
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    gap: 14px;
+    align-items: end;
+}
+
+.filters label {
+    display: grid;
+    gap: 7px;
+    color: #536078;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 0;
+}
+
+.filters select {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #dfe5ef;
+    border-radius: 9px;
+    outline: none;
+    background: #fbfcff;
+    color: #27344b;
+    font-size: 12px;
+}
+
+.filters select:focus,
+.table-head input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(65, 105, 245, 0.1);
+}
+
+.apply {
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 9px;
+    background: var(--blue);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.apply:hover {
+    background: #2f52d7;
+}
+
+.filter-message {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* 8. KPI CARDS */
+
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.kpi {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: white;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.kpi:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(23, 39, 72, 0.1);
+}
+
+.kpi > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.kpi > div span {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.kpi-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 9px;
+}
+
+.blue {
+    background: #eaf0ff;
+    color: #4169f5;
+}
+
+.purple {
+    background: #f0eaff;
+    color: #8754df;
+}
+
+.teal {
+    background: #e2f8f5;
+    color: #138c84;
+}
+
+.amber {
+    background: #fff3df;
+    color: #c58112;
+}
+
+.kpi > strong {
+    display: block;
+    margin: 14px 0 7px;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: clamp(19px, 2vw, 27px);
+    font-weight: 800;
+    letter-spacing: -0.7px;
+    overflow-wrap: anywhere;
+}
+
+.kpi > small {
+    color: #8a95a8;
+    font-size: 10px;
+}
+
+
+/* 9. CHART CARDS */
+
+.chart-card {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.chart-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.chart-head h3,
+.table-head h3 {
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.chart-head p,
+.table-head p {
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.chart-box {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    min-width: 0;
+    margin-top: 13px;
+}
+
+.chart-box canvas {
+    display: block;
+    max-width: 100%;
+}
+
+.chart-box.doughnut {
+    max-width: 440px;
+    height: 300px;
+    margin: 13px auto 0;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 16px;
+}
+
+
+/* 10. BUSINESS INSIGHTS */
+
+.insights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.insights article {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: linear-gradient(145deg, white, #f8faff);
+}
+
+.insights article > span {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 13px;
+    border-radius: 9px;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.insights h3 {
+    margin-bottom: 7px;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 13px;
+}
+
+.insights p {
+    color: #6c7890;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.disclaimer {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border: 1px solid #f4e6c4;
+    border-radius: 8px;
+    background: #fff7e6;
+    color: #7d6a3a;
+    font-size: 11px;
+}
+
+
+/* 11. ORDER TABLE */
+
+.table-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.table-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.table-head input {
+    width: 190px;
+    max-width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    outline: none;
+    font-size: 11px;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background: #f6f8fc;
+}
+
+th {
+    padding: 14px 15px;
+    border-block: 1px solid var(--line);
+    color: #718099;
+    font-size: 10px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #edf0f5;
+    color: #526078;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background: #f6f8ff;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+
+/* 12. ABOUT PROJECT */
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding: 26px;
+    margin-bottom: 30px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.about h2 {
+    margin: 5px 0 8px;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.about p:not(.eyebrow) {
+    max-width: 550px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.tools {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+    max-width: 270px;
+}
+
+.tools span {
+    padding: 7px 10px;
+    border-radius: 7px;
+    background: #edf2ff;
+    color: #3c5ed1;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* 13. FOOTER */
+
+footer {
+    padding: 25px 0 30px;
+    border-top: 1px solid var(--line);
+    color: #7c879a;
+    font-size: 11px;
+    text-align: center;
+}
+
+footer b {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--ink);
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 14px;
+}
+
+footer .logo {
+    width: 27px;
+    height: 27px;
+    margin-right: 5px;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+
+footer small {
+    color: #9aa4b5;
+    font-size: 10px;
+}
+
+
+/* 14. TABLET RESPONSIVENESS */
+
+@media (max-width: 1200px) {
+    main,
+    .main-content {
+        padding: 0 24px;
+    }
+
+    .filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    .brand {
+        padding: 0 0 15px;
+    }
+
+    .side-label,
+    .side-bottom {
+        display: none;
+    }
+
+    .sidebar nav {
+        display: flex;
+        gap: 5px;
+        overflow-x: auto;
+    }
+
+    .sidebar nav a {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 10px;
+    }
+
+    main,
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 22px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr 0.7fr;
+    }
+}
+
+
+/* 15. MOBILE RESPONSIVENESS */
+
+@media (max-width: 650px) {
+    main,
+    .main-content {
+        padding: 0 13px;
+    }
+
+    .topbar {
+        min-height: 90px;
+    }
+
+    .topbar h1 {
+        font-size: 23px;
+    }
+
+    .badge {
+        font-size: 10px;
+        padding: 7px 9px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-copy {
+        padding: 25px 21px;
+    }
+
+    .hero h2 {
+        font-size: 29px;
+    }
+
+    .hero-art {
+        min-height: 165px;
+    }
+
+    .bars {
+        height: 100px;
+        bottom: 20px;
+    }
+
+    .floating-card {
+        top: 10px;
+    }
+
+    .filter-panel {
+        padding: 17px;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .filters label,
+    .filters select,
+    .apply {
+        width: 100%;
+    }
+
+    .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .kpi {
+        padding: 14px 12px;
+    }
+
+    .kpi > strong {
+        font-size: 20px;
+    }
+
+    .chart-grid,
+    .insights {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-card {
+        padding: 15px;
+    }
+
+    .chart-box {
+        height: 270px;
+    }
+
+    .chart-box.doughnut {
+        height: 260px;
+    }
+
+    .table-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .table-head input {
+        width: 100%;
+    }
+
+    .about {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .tools {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 390px) {
+    .kpis {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar h1 {
+        font-size: 20px;
+    }
+}

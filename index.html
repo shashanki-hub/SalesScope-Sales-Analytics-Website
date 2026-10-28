@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SalesScope | E-commerce Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <a class="brand" href="#home"><span class="logo">S</span><span>SalesScope<small>ANALYTICS
+                        STUDIO</small></span></a>
+            <p class="side-label">WORKSPACE</p>
+            <nav>
+                <a class="active" href="#home">⌂ &nbsp; Overview</a><a href="#sales-overview">▦ &nbsp; KPI Summary</a><a
+                    href="#sales-performance">⌁ &nbsp; Sales Trends</a><a href="#product-analysis">◫ &nbsp; Product
+                    Analysis</a><a href="#business-insights">✳ &nbsp; Insights</a><a href="#orders">☷ &nbsp; Order
+                    Records</a>
+            </nav>
+            <div class="side-bottom"><span class="live-dot"></span><span><b>Portfolio project</b><small>Interactive demo
+                        dashboard</small></span></div>
+        </aside>
+        <main id="home">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">ANALYTICS / E-COMMERCE</p>
+                    <h1>Sales performance</h1>
+                </div><span class="badge"><i></i> Demo dataset</span>
+            </header>
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">YOUR BUSINESS AT A GLANCE</p>
+                    <h2>Turn sales data into<br><span>smarter decisions.</span></h2>
+                    <p>Explore revenue trends, compare product categories, and uncover patterns in this interactive
+                        dashboard.</p><a class="hero-btn" href="#sales-overview">Explore dashboard <b>→</b></a>
+                </div>
+                <div class="hero-art" aria-hidden="true">
+                    <div class="orbit"></div>
+                    <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="floating-card"><small>Sales insight</small><strong>Monthly performance</strong></div>
+                </div>
+            </section>
+            <section class="filter-panel">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">CUSTOMIZE VIEW</p>
+                        <h2>Explore sales data</h2>
+                    </div><button id="resetFilters" class="link-button" type="button">Reset filters ↺</button>
+                </div>
+                <form id="salesFilterForm" class="filters">
+                    <label>Product category<select id="category">
+                            <option value="all">All categories</option>
+                            <option>Electronics</option>
+                            <option>Fashion</option>
+                            <option>Home & Kitchen</option>
+                            <option>Beauty</option>
+                            <option>Sports</option>
+                        </select></label>
+                    <label>Sales region<select id="region">
+                            <option value="all">All regions</option>
+                            <option>North</option>
+                            <option>South</option>
+                            <option>East</option>
+                            <option>West</option>
+                        </select></label>
+                    <label>Time period<select id="period">
+                            <option value="all">All months</option>
+                            <option value="Q1">Q1 · Jan–Mar</option>
+                            <option value="Q2">Q2 · Apr–Jun</option>
+                        </select></label>
+                    <button class="apply" type="submit">Apply filters →</button>
+                </form>
+                <p id="filterMessage" class="filter-message" aria-live="polite">Showing demo records.</p>
+            </section>
+            <section id="sales-overview" class="dashboard-section">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">PERFORMANCE SNAPSHOT</p>
+                        <h2>Sales overview</h2>
+                        <p class="sub">Key metrics for the selected records.</p>
+                    </div><span id="periodLabel" class="tag">JAN — JUN 2026</span>
+                </div>
+                <div class="kpis">
+                    <article class="kpi">
+                        <div><span>Total revenue</span><b class="kpi-icon blue">₹</b></div><strong
+                            id="totalRevenue">₹0</strong><small>Sales generated</small>
+                    </article>
+                    <article class="kpi">
+                        <div><span>Total orders</span><b class="kpi-icon purple">▤</b></div><strong
+                            id="totalOrders">0</strong><small>Matching transactions</small>
+                    </article>
+                    <article class="kpi">
+                        <div><span>Average order value</span><b class="kpi-icon teal">↗</b></div><strong
+                            id="averageOrderValue">₹0</strong><small>Revenue per order</small>
+                    </article>
+                    <article class="kpi">
+                        <div><span>Units sold</span><b class="kpi-icon amber">▦</b></div><strong
+                            id="totalUnits">0</strong><small>Products purchased</small>
+                    </article>
+                </div>
+            </section>
+            <section id="sales-performance" class="dashboard-section">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">REVENUE OVER TIME</p>
+                        <h2>Sales performance</h2>
+                        <p class="sub">Compare revenue and profit month by month.</p>
+                    </div><span class="tag">LINE CHART</span>
+                </div>
+                <article class="chart-card">
+                    <div class="chart-head">
+                        <div>
+                            <h3>Monthly revenue &amp; profit</h3>
+                            <p>Calculated from the same sample order records.</p>
+                        </div>
+                    </div>
+                    <div class="chart-box"><canvas id="salesTrendChart"></canvas></div>
+                </article>
+            </section>
+            <section id="product-analysis" class="dashboard-section">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">CATEGORY BREAKDOWN</p>
+                        <h2>Product analysis</h2>
+                        <p class="sub">Compare category and regional revenue.</p>
+                    </div>
+                </div>
+                <div class="chart-grid">
+                    <article class="chart-card">
+                        <div class="chart-head">
+                            <div>
+                                <h3>Revenue by category</h3>
+                                <p>Category-level sales comparison.</p>
+                            </div>
+                        </div>
+                        <div class="chart-box"><canvas id="categoryRevenueChart"></canvas></div>
+                    </article>
+                    <article class="chart-card">
+                        <div class="chart-head">
+                            <div>
+                                <h3>Revenue by region</h3>
+                                <p>Share of sales across regions.</p>
+                            </div>
+                        </div>
+                        <div class="chart-box doughnut"><canvas id="regionChart"></canvas></div>
+                    </article>
+                </div>
+            </section>
+            <section id="business-insights" class="dashboard-section">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">WHAT THE DATA SAYS</p>
+                        <h2>Business insights</h2>
+                        <p class="sub">Calculated automatically from the selected sample records.</p>
+                    </div>
+                </div>
+                <div class="insights">
+                    <article><span>01</span>
+                        <h3>Top category</h3>
+                        <p id="topCategoryInsight">Calculating...</p>
+                    </article>
+                    <article><span>02</span>
+                        <h3>Best month</h3>
+                        <p id="bestMonthInsight">Calculating...</p>
+                    </article>
+                    <article><span>03</span>
+                        <h3>Top region</h3>
+                        <p id="topRegionInsight">Calculating...</p>
+                    </article>
+                </div>
+                <p class="disclaimer">Portfolio demonstration: these are illustrative sample records, not verified
+                    business results.</p>
+            </section>
+            <section id="orders" class="dashboard-section">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">TRANSACTION DETAIL</p>
+                        <h2>Order records</h2>
+                        <p class="sub">Filter the records using the controls above.</p>
+                    </div><span id="recordCount" class="tag">0 records</span>
+                </div>
+                <article class="table-card">
+                    <div class="table-head">
+                        <div>
+                            <h3>Recent orders</h3>
+                            <p>Sample records · INR</p>
+                        </div><input type="search" id="orderSearch" placeholder="Search orders..."
+                            aria-label="Search orders">
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Order date</th>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Qty</th>
+                                    <th>Revenue</th>
+                                    <th>Profit</th>
+                                    <th>Region</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+            <section class="about">
+                <div>
+                    <p class="eyebrow">ABOUT THIS PROJECT</p>
+                    <h2>From raw data to useful insights.</h2>
+                    <p>A portfolio project demonstrating data aggregation, filtering, and visualization with front-end
+                        technologies.</p>
+                </div>
+                <div class="tools">
+                    <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Chart.js</span><span>Data
+                        analysis</span></div>
+            </section>
+            <footer><b><span class="logo">S</span> SalesScope</b>
+                <p>Created by Shashanki Rawat · Data Analytics Portfolio Project</p><small>© 2026 E-commerce Sales
+                    Analytics. Demo data is illustrative.</small>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>
